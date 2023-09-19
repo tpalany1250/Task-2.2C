@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Car Website</title>
+    <link rel="stylesheet" href="Products.css"> <!-- External CSS-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Vue.js library -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- Website Header -->
+        <header>
+            <h1>{{ pageTitle }}</h1>
+
+            <div id="nav">
+                <a href="Home.html">Home</a>
+                <a href="Finance.html">Finance</a>
+                <a href="Contact.html">Contact</a>
+                <a href="Collectibles.html">Collectibles</a>
+                <a href="Products.html">Products</a>
+            </div>
+        </header>
+
+        <div class="prod">
+            <!-- Use v-for to loop through products -->
+            <article class="product" v-for="(product, index) in products" :key="index">
+                <br>
+                <img :src="product.image" width="100px" height="100px">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <button @click="addToCart(index)">Add to Cart</button>
+                <br><br>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    pageTitle: "My Car Website",
+                    products: [
+                        {
+                            name: "Product 1",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        {
+                            name: "Product 2",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        {
+                            name: "Product 3",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        {
+                            name: "Product 4",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        {
+                            name: "Product 5",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                    ],
+                };
+            },
+            methods: {
+                addToCart(index) {
+                    // Handle Add to Cart button click for the specified product
+                    console.log("Product added to cart:", this.products[index]); // sends to console.log
+                    // Will implement cart functionality here later
+                },
+            },
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

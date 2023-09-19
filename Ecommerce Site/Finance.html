@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Car Website</title>
+    <link rel="stylesheet" href="Finance.css"> <!-- External CSS-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Vue.js library -->
+</head>
+
+<body>
+    <!-- Website Header -->
+    <header>
+        <h1>{{ pageTitle }}</h1>
+
+        <div id="nav">            
+            <a href="Home.html">Home</a> <!-- Homepage LINK -->
+            <a href="Finance.html">Finance</a> <!-- Finance LINK -->
+            <a href="Contact.html">Contact</a> <!-- Contact LINK -->
+            <a href="Collectibles.html">Collectibles</a> <!-- Collectibles LINK -->
+            <a href="Products.html">Products</a> <!-- Products LINK -->
+        </div>
+    </header>
+
+    <br>
+
+    <h1 style="color: white; text-align: center;">COMING SOON!!</h1>
+    
+    <br>
+
+    <div class="Financing">
+        <ul>HERE WILL BE THE FINANCING OPTION</ul> <!-- Financing Option -->
+    </div>
+
+    <br><br>
+
+    <div class="Financing">
+        <ul>HERE WILL BE THE LEASING OPTION</ul> <!-- Leasing Option -->
+    </div>
+
+    <br><br>
+
+    <div class="Financing">
+        <ul>HERE WILL BE THE TRADE-IN OPTION</ul> <!-- Trade-in Option -->
+    </div>
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    pageTitle: "My Car Website",
+                };
+            },
+        });
+
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

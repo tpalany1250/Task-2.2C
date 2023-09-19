@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Car Website</title>
+
+    <link rel="stylesheet" href="Home.css"> <!-- External CSS-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Vue.js library -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- Website Header -->
+        <header>
+            <h1>{{ pageTitle }}</h1>
+        </header>
+
+        <div id="nav">            
+            <a href="Home.html">Home</a> <!-- Homepage LINK -->
+            <a href="Finance.html">Finance</a> <!-- Finance LINK -->
+            <a href="Contact.html">Contact</a> <!-- Contact LINK -->
+            <a href="Collectibles.html">Collectibles</a> <!-- Collectibles LINK -->
+            <a href="Products.html">Products</a> <!-- Products LINK -->
+        </div>
+
+        <br>
+
+        <div class="container">
+            <div class="image-container" :style="{ transform: `translateY(-${scrollY}px)` }">
+                <img id="garage-image" src="g1.jpg" alt="Homepage">
+            </div>
+        </div>
+
+        <!-- INTRODUCTION SECTION -->
+        <div class="start">
+            <div class="text">
+                <h3 style="color: black;">Find The Right Vehicle</h3>
+                <p>{{ introText }}</p>
+                <p>-</p>
+                <p>This is random information, more accurate information about the company will be added later</p>
+                <button @click="learnMore">Learn More</button>
+            </div>
+        </div>
+
+        <!-- ABOUT US SECTION -->
+        <div class="about">
+            <h3>About Us</h3>
+            <br>
+            <div class="about-content">
+                <img id="about-image" src="about.jpg" alt="About">
+                <div class="about-text">
+                    <p>{{ aboutText }}</p>
+                    <p>-</p>
+                    <p>This is random information, more accurate information about the company will be added later</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <!-- OPENING HOURS SECTION -->
+        <div class="OH">
+            <h3>Opening Hours</h3>
+            <div class="hours-text">
+                <p v-for="(day, hours) in openingHours" :key="day">{{ day }}: {{ hours }}</p>
+                <br>
+            </div>
+        </div>
+
+        <!-- PRODUCT SECTION -->
+        <div class="prod">
+            <article class="product" v-for="product in products" :key="product.id">
+                <br>
+                <img :src="product.image" width="100px" height="100px">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <button @click="addToCart(product)">Add to Cart</button>
+                <br><br>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    pageTitle: "My Car Website",
+                    introText: "Additional support is available via the SIT HelpHub - head over to the HelpHub site for the latest timetable details and our HelpHub channel in Teams during those times if you would like some for further assistance.",
+                    aboutText: "Additional support is available via the SIT HelpHub - head over to the HelpHub site for the latest timetable details and our HelpHub channel in Teams during those times if you would like some for further assistance.",
+                    scrollY: 0,
+                    openingHours: {
+                        Mon: "9am - 7pm",
+                        Tues: "9am - 8pm",
+                        Wed: "9am - 8pm",
+                        Thurs: "9am - 8pm",
+                        Fri: "10am - 7pm",
+                        Sat: "11am - 6pm",
+                    },
+                    products: [
+                        {
+                            id: 1,
+                            name: "Product 1",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        {
+                            id: 2,
+                            name: "Product 2",
+                            description: "Product description here...",
+                            price: 100,
+                            image: "icon.png",
+                        },
+                        // To more products here...
+                    ],
+                };
+            },
+            methods: {
+                learnMore() {
+                    // Handle Learn More button click (FUTURE PURPOSE)
+                },
+                addToCart(product) {
+                    // Handle Add to Cart button click (FUTURE PURPOSE)
+                },
+            },
+        });
+
+        app.mount("#app");
+
+        // Add smooth scrolling using JavaScript
+        window.addEventListener("scroll", function () {
+            app.scrollY = window.scrollY || window.pageYOffset;
+        });
+    </script>
+</body>
+
+</html>
